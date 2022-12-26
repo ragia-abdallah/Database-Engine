@@ -11,7 +11,7 @@ then
 echo "Database does not exist"
 else
 rm -r ../databases/$name
-sed -i '/"$name"/d' ../databases/databases.list
+sed -i "$name"'d' ../databases/databases.list
 echo "Database successfully deleted."
 exit
 fi
