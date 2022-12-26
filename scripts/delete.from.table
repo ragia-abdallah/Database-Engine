@@ -21,8 +21,7 @@ linenumber=`grep -n -s "^$key:" $tablename.data | cut -d: -f1`
 
 echo $linenumber
 
-sed -i '/"$key"/d' ${tablename}.data
-
+sed -i "$key"'d' ${tablename}.data
 #awk -F: '{
 #if($1==$key)
 #-d $0; 
