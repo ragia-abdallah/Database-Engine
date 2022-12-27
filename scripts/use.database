@@ -19,6 +19,7 @@ then
 else
 
 cd ../databases/${db}
+clear
 
 fi
 

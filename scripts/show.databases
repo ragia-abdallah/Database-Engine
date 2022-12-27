@@ -1,4 +1,10 @@
 #!/bin/bash
 
-cat ../databases/databases.list
+clear
+
+cd ../databases
+
+ls -d */
+
+
 

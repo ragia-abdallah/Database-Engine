@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# echo "Tables exist in $1"
-# ls ./databases/databases.list/$1
+clear
 
 read -p "Enter table Name: " name
 read -p "Are you sure? (y/n)" check
@@ -25,6 +24,5 @@ then
 else
 	echo " Invalid choice. "
 	exit
-
 fi
-exit
+

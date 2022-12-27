@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 read -p "Enter table name : " tablename
 
 condition1='[0-9]*'
@@ -19,9 +21,10 @@ read -p "Enter primary identifier of record: " key
 
 linenumber=`grep -n -s "^$key:" $tablename.data | cut -d: -f1`
 
-echo $linenumber
+#echo $linenumber
 
-sed -i "$key"'d' ${tablename}.data
+sed -i "$key"'d' ${tablename}.data 
+
 #awk -F: '{
 #if($1==$key)
 #-d $0; 

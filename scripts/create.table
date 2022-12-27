@@ -1,5 +1,7 @@
 #! /bin/bash
 
+clear
+
 read -e -p "Enter table name: " name
 
 condition1='[0-9]*'
@@ -32,10 +34,22 @@ fi
 
 
 read -e -p "Enter primary key: " pk
+if [[ ${pk} == $condition1 ]] || [[ ${pk} == $condition2 ]] || [[ ${pk} == ["'"] ]]
+then
+echo "Invalid input. Please make sure column name doesn't contain spaces or special characters"
+exit
+else
 read -e -p "Enter datatype (int/str): " pktp
-
+if [[ ${pktp} == "int" || ${pktp} == "str" ]]
+then
 line1=${pk}
 line2=${pktp}
+
+else
+echo "Invalid input."
+exit
+fi
+fi
 
 typeset -i i
 

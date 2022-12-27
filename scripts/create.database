@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 read -e -p "Enter database name: " name
 
 condition1='[0-9]*'

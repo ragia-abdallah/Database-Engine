@@ -1,0 +1,50 @@
+#!/bin/bash
+
+clear
+
+read -p "Enter table name : " tablename
+
+condition1='[0-9]*'
+condition2='*[\!@#$%^&*()-+=|\["\}\{\]/?><:;\.,`~ ]*'
+condition3='*[\!#$%^&*()+=|\["\}\{\]/?><:\`~]*'
+
+if [[ ${tablename} == $condition1 ]] || [[ ${tablename} == $condition2 ]] || [[ ${tablename} == "" ]] || [[ ${tablename} == ["'"] ]]
+then
+	echo "Invalid name."
+
+elif [[ ! -f ${tablename}.meta ]]
+then
+	echo "Table does not exist."
+else
+
+col="init"
+cols=''
+
+until [[ $col == "" ]]
+do
+
+read -p "Enter column number(s) to show: (when done press enter)" col
+if [[ $col == "" ]] 
+then
+
+continue
+
+elif [[ ! $col =~ ^[0-9]+$ ]] ; then
+    	echo "Invalid input."
+    exit
+fi
+
+cols="$cols, '$'$col"
+done
+
+echo $cols
+
+read -p "Enter record identifier: " key
+
+linenumber=`grep -n -s "^$key:" $tablename.data | cut -d: -f1`
+
+sed -n '1p' $tablename.meta
+
+awk -F: '{if (NR=="$linenumber") print $0}' $tablename.data
+
+fi

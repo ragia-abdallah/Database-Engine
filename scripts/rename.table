@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 read -e -p "Choose table: " old
 read -e -p "Enter new table name: " new
 
@@ -23,8 +25,8 @@ else
 mv ${old}.meta ${new}.meta
 mv ${old}.data ${new}.data
 
-#sed -i `d "${old}"` databases/databases.list
-#sed -i `d "${new"` databases/databases.list
+sed -i "${old}"'d' tables.list
+echo ${new} >> tables.list
 
 sed -i 's/${old}/${new}/g' tables.list
 
